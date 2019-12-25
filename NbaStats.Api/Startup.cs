@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NbaStats.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using AutoMapper;
 
 namespace NbaStats.Api
 {
@@ -29,6 +31,7 @@ namespace NbaStats.Api
         {
             services.AddDbContext<NbaStatsDbContext>(opt => opt.UseSqlServer("ADD CONNECTION STRING"));
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
