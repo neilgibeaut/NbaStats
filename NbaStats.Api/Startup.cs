@@ -31,7 +31,10 @@ namespace NbaStats.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<NbaStatsDbContext>(opt => opt.UseSqlServer("ADD CONNECTION STRING"));
+            // TODO: Connect to db based on env. For now connecting to local always
+            services.AddDbContext<NbaStatsDbContext>(opt => {
+                opt.UseSqlServer(Configuration.GetConnectionString("NbaStatsLocal"));
+            });
             
             services.AddControllers();
             

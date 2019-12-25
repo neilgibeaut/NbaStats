@@ -10,6 +10,7 @@ namespace NbaStats.Data
 {
     public class NbaStatsDbContext: DbContext
     {
+        public NbaStatsDbContext(DbContextOptions<NbaStatsDbContext> options): base(options) {}
         public DbSet<Game> Games { get; set; }
 
         public DbSet<Team> Teams { get; set; }
