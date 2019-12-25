@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using AutoMapper;
 using MediatR;
 using NbaStats.Application;
+using Microsoft.OpenApi.Models;
 
 namespace NbaStats.Api
 {
@@ -45,6 +46,15 @@ namespace NbaStats.Api
             services.AddMvc(opt => opt.RespectBrowserAcceptHeader = true)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddXmlSerializerFormatters();
+
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Nba Stats API";
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +75,10 @@ namespace NbaStats.Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOpenApi();
+
+            app.UseSwaggerUi3();
         }
     }
 }

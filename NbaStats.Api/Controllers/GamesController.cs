@@ -24,6 +24,11 @@ namespace NbaStats.Api.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Creates a game in NbaStats database
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns>Id of created game</returns>
         [HttpPost]
         public async Task<ActionResult<long>> Create(GameCreateCommand command)
         {
