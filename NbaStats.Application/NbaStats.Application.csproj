@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Heroic.AutoMapper" Version="5.0.0" />
     <PackageReference Include="MediatR" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NbaStats.Data\NbaStats.Data.csproj" />
+    <ProjectReference Include="..\NbaStats.Domain\NbaStats.Domain.csproj" />
   </ItemGroup>
 
 </Project>

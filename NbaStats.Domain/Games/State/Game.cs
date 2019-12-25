@@ -11,9 +11,9 @@ namespace NbaStats.Domain.Games.State
 
         public DateTime StartTime { get; set; }
 
-        public long HomeTeamId { get; set; }
+        public string HomeTeamName { get; set; }
 
-        public long AwayTeamId { get; set; }
+        public string AwayTeamName { get; set; }
 
         public int HomeTeamScore { get; set; }
 

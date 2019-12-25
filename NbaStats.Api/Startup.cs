@@ -14,6 +14,8 @@ using NbaStats.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using AutoMapper;
+using MediatR;
+using NbaStats.Application;
 
 namespace NbaStats.Api
 {
@@ -30,8 +32,16 @@ namespace NbaStats.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<NbaStatsDbContext>(opt => opt.UseSqlServer("ADD CONNECTION STRING"));
+            
             services.AddControllers();
+            
             services.AddAutoMapper(typeof(Startup));
+            
+            services.AddMediatR(NbaStatsApplication.Assembly);
+
+            services.AddMvc(opt => opt.RespectBrowserAcceptHeader = true)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddXmlSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
