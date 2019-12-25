@@ -9,6 +9,8 @@ namespace NbaStats.Domain.Games.State
     {
         public long GameId { get; set; }
 
+        public DateTime StartTime { get; set; }
+
         public long HomeTeamId { get; set; }
 
         public long AwayTeamId { get; set; }
